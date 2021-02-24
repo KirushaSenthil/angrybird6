@@ -7,8 +7,19 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
-
-
+var a=10
+var b=5.5
+var c="hi"
+var daysOfWeek=["mon","tue","wed","thurs","fri","sat","sun"]
+console.log(daysOfWeek.length)
+console.log(daysOfWeek[6])
+daysOfWeek.pop()
+console.log(daysOfWeek)
+daysOfWeek.push("sun")
+console.log(daysOfWeek)
+var path=[[100,200],[400,600],[30,500]]
+console.log(path[2][0])
+var gameState="ONSLING"
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
@@ -69,12 +80,18 @@ function draw(){
 }
 
 function mouseDragged(){
-    Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    if(gameState!=="launched"){
+        Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
+    }
+    
+
 }
 
 
 function mouseReleased(){
+
     slingshot.fly();
+    gameState="launched"
 }
 
 function keyPressed(){
